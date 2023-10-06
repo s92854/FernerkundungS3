@@ -1,4 +1,7 @@
 # Übung 1
+## Begriffe
+Radiometrische Auflösung = Auflösung eines Pixels am Boden
+
 ## ERDAS IMAGINE Grundlagen
 Rechtsklick > Open Raster Layer > bln_ucd_2006_ir_8bit_28cm.img > Raster Options > Grey Scale > Pyramiden berechnen lassen
 Radiometrie > No Stretch > Breakpoints > Breakpoint an beliebiger Stelle vor Kurve hinzufügen > nach vorne verschieben
