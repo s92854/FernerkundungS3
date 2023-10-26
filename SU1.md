@@ -35,3 +35,6 @@ Radiometrische Transformationen DN, z.B. Grauwerte werden verändert, während d
 * Verbesserung der Bildqualität
 * 
 
+DN = digital number; Zahl in einem Rasterdatensatz
+NDVI = Grad der vitalen Vegetation
+Histogramme geben Informationen über Helligkeit und Kontrast - ein Histogramm mit vielen Werten entlang der x-Achse hat zur Folge, dass der Kontrast sehr hoch ist
