@@ -50,3 +50,32 @@ Raster > Table > Colors
 Raster > Unsupervised > NDVI > View > Rechtsklick in Modeler > Save As > "EIFEL_Model_GLI.gmdx"
 
 ## Green Leaf Index GLI
+
+
+# Hauptkomponenteninterpretation
+1. Rechtsklick > Rasterlayer laden > Alle 15 Riverlayer auswählen > Multiple > Virtual Stack
+
+2. Raster > Spectral > Layer Stack > .vsk Datei auswählen (alle 15 Layer hinzufügen)
+
+3. Raster > Spectral > Principal Component > Einstellungen wie folgt:
+
+<img width="467" alt="image" src="https://github.com/s92854/FernerkundungS3/assets/134683810/9dab3534-9c0d-4fbf-8d75-d9c9587e84e4">
+
+Eigenwerte: Varianz der einzelnen Hauptkomponenten
+
+$\sqrt{Varianz} = Standardabweichung$   $\sigma$
+
+$Varianz = \sigma^2$
+
+|Kanal|&sigma;|&sigma;<sup>2</sup>|
+|---|---|---|
+|1|0,396|0,157|
+|2|0,063|0,004|
+|3|0,035|0,001|
+|...|...|...|
+
+Eigenvektoren: Beitrag jedes Ursprungskanals zur jeweiligen Hauptkomponente
+
+
+### Formatierung in Excel
+Dazu öffnen der *.mtx und *.tbl Dateien in Editor und den Punkt (.) durch Komma (,) ersetzen > beide aktualisierten Dateien in Excel laden > *.mtx Tabelle beim Laden mit Leerzeichen trennen und mit bedingter Formatierung einfärben
