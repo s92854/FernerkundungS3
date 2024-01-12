@@ -85,6 +85,55 @@ Die Quantisierung bezeichnet den Wertebereich der Grauwerte eines Bildes
 * Kartenprojektion
 * Geodätisches Bezugssystem
 
+### Digitale Bildverarbeitung (digital image processing)
+* digital vorliegende Bilder werden rechnergestützt weiterverarbeitet (keine Aussage um welche Verarbeitung es sich handelt)
+
+### Digitale Bildbearbeitung (image enhancement, image restauration)
+* digital vorliegende Bilder werden durch spezielle Methoden aufbereitet bzw. verbessert, da die Qualität i.d.R. durch Störungen gelitten hat
+* i.d.R. wegen eines bestimmten Auswerteziels
+
+#### Ziele
+* visuelle Bildinterpretation
+* automatische Bildauswertung
+
+#### Visuelle Bildinterpretation
+* Menschen interpretieren Bilder
+    * Filterung (Kantenverstärkung zur Schärfung des Bildinhalts, Glättung des Bildinhalts zur Reduktion von Bildrauschen)
+    * Helligkeits- und Kontrastverbesserung
+    * Kanalkombinationen (z.B. Ratios,  Pan-Sharpening)
+    * Künstliches Einfärben monochromer Bilder (Falschfarbenbilder)
+    * Dekorrelation (z.B. Hauptkomponentenanalyse (principal component analysis, pca))
+
+#### Automatische Bildauswertung
+* Computerverfahren, die ohne menschliche Beobachter auskommen (maschinelles Sehen (computer vision), Mustererkennung (pattern recognition))
+    * Filterung
+    * Beseitigung systematischer Fehler des Sensors (z.B. radio- und geometrische Abbildungsfehler)
+    * Beseitigung systematischer Fehler der Aufnahme (z.B. Atmosphärenkorrektur, Beleuchtungskorrektur)
+    * bestimmte Bildinformationen zusammenfassen (z.B. Segmentierung, Clusteranalyse, k-nearest-neighbor (KNN))
+
+#### Frequenzbereich
+* Transformation eines Bildes in seine Frequenzanteile
+
+#### Ortsbereich
+* Darstellung der Position im Raum
+
+#### Fouriertransformation und Inverse Fouriertransformation
+* Frei hin und her transformieren zwischen Orts- und Frequenzbereich
+* Orts- in Frequenzbereich: Fouriertransformation
+* Frequenz- in Ortsbereich: Inverse Fouriertransformation
+    * nach Jean Baptiste de Fourier
+
+##### Bearbeitung im Ortsbereich
+Die Beziehung bezieht sich auf die räumliche Anordnung von Pixeln in einem digitalen Bild. Bildbearbeitungsfunktionen im Ortsbereich werden generell beschrieben als:
+
+$$f2(x,y)=T[f1(x,y)]$$
+
+* f<sub>1</sub>(x,y) ist Grauwert des Eingabe- und f<sub>2</sub>(x,y) Grauwert des Ausgabebildes
+* T ist ein Bildoperator im Bezug auf f<sub>1</sub>
+
+### Digitale Bildauswertung (digital image processing, feature extraction, pattern recognition, image classification)
+* Ableiten semantischer Informationen aus Bildern
+
 ## Histogramme
 Histogramme sind Häufigkeitsverteilungen. Hier: Häufigkeitsverteilungen der Intensitäts- bzw. Grauwerte
 
@@ -112,3 +161,4 @@ Ein Histogramm enthält nur Information über die Grauwertverteilung, nicht übe
 * Mittelwertbildung der 3 Kanäle
 * Mensch kann nicht gesamtes Farbspektrum sehen und nimmt unterschiedliche Farben untersch. stark wahr
     * Darstellung von RGB-Bildern mithilfe der Luminanz: gewichtete Helligkeit (60% Grün, 30% Rot, 10% Blau)
+
