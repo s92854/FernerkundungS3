@@ -162,3 +162,68 @@ Ein Histogramm enthält nur Information über die Grauwertverteilung, nicht übe
 * Mensch kann nicht gesamtes Farbspektrum sehen und nimmt unterschiedliche Farben untersch. stark wahr
     * Darstellung von RGB-Bildern mithilfe der Luminanz: gewichtete Helligkeit (60% Grün, 30% Rot, 10% Blau)
 
+## Bildoperatoren
+### Punktoperatoren
+* pixelorientiert; betreffen nur einzelne Bildelemente (Grauwerttransformation)
+* arbeiten isoliert auf einzelnen Pixeln, wissen nichts über die Umgebung des Pixels (arbeitet grauwertorientiert)
+* jeder neue Pixelwert hängt ausschließlich vom alten Pixelwert ab, unabhängig von anderen Pixelwerten im Bild (keine Nachbarschaft wird berücksichtigt)
+* Anwendungen:
+    * Kontraständerung
+        * Multiplikation, damit Streckung oder Stauchung des Histogramms
+    * Helligkeitsänderung
+        * Addition bzw. Subtraktion (+a oder -a), damit Veränderung der Amplitude des Histogramms
+    * Anwendung beliebiger Helligkeitskurven (Transferfunktionen)
+    * Invertieren von Bildern
+    * Schwellenwertbildung (Binarisierung, treshold)
+        * Anzahl der Grauwerte eines Bildes wird auf 2 reduziert (0,1)
+        * wird häufig im 1. Schritt der Objekterkennung (Segmentierung) genutzt, um Objekte vom Bildhintergrund zu trennen
+    * Rauschen reduzieren
+        * Nicht-Information, die der nutzbaren Information überlagert ist
+        * Signal-Rauschverhältnis: Verhältnis zwischen nutzbarer Bildinfo und Rauschen
+        * z.B. durch Addition der Bilder; Achtung: Bittiefe kann sich ändern
+    * Histogrammausgleich (histogram equalization)
+        * Konstrastverbesserung &rarr; häufig: wenige Bildpunkte nutzen großen und viele Bildpunkte einen kleinen Grauwertbereich
+        * durch homogene Punktoperationen gleichverteiltes Histogramm erzeugen
+    * Look-Up-Table (LUT)
+        * Wertetabelle mit zwei Spalten: Original- und Zielwert
+        * schnelle Wertsuche
+        * weniger Speicherplatz
+
+#### Homogene Punktoperatoren
+* Position des Pixels hat auf den neuen Grauwert keinen Einfluss, sondern nur der ursprüngliche Grauwert des Pixels
+
+#### Inhomogene Punktoperatoren
+* Lage des Pixels wird mit verrechnet
+* neue Grauwert hängt vom ursprünglichen Grauwert und der Position des Pixels innerhalb des Bildes ab
+* z.B. Aufhellung des Bildes an den Rändern
+
+### Lokale Operatoren
+* regionenorientiert &rarr; Berechnung aus einer Menge von benachbarten Pixeln
+* durch Punktoperatoren lassen sich keine Glättung oder Schärfungen erzeugen
+* Problem: Randpixel können nicht berechnet werden, da außerhalb des Bildes Informationen fehlen &rarr; mgl. Lösung: Ränder im Ergebnisbild leer (undefined) lassen oder Ränder nach außen spiegeln (Bild künstlich vergrößern)
+
+#### Parameter
+* Größe der Region (Filtermatrix)
+* Form der Filterregion
+* Gewichtung der Quellpixel (konstant vs. ortsabhängig)
+
+#### Bildfilterung
+* Bildverbesserungen:
+    * Unterdrückung bzw. Verminderung vorhandenen Rauschens
+    * Unterdrückung von Störungen (Pixelausfälle)
+    * Restaurierung von Bildern
+    * Hervorhebung von Details (z.B. Kantenverstärkung)
+
+##### Lineare Filter
+* Wert des Zielpixels wird in linearer Form als gewichtete Summe der Quellpixel berechnet
+* Größe und Form der Filterregion und Gewichte des Filters werden durch eine Matrix spezifiziert **Filtermatrix** H<sub>ij</sub>
+* Beispiele:
+    * Glättungsfilter
+
+##### Nicht lineare Filter
+
+### Globale Operatoren
+* gesamtes Bild
+
+
+S. 66
