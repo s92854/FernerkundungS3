@@ -217,13 +217,58 @@ Ein Histogramm enthält nur Information über die Grauwertverteilung, nicht übe
 ##### Lineare Filter
 * Wert des Zielpixels wird in linearer Form als gewichtete Summe der Quellpixel berechnet
 * Größe und Form der Filterregion und Gewichte des Filters werden durch eine Matrix spezifiziert **Filtermatrix** H<sub>ij</sub>
+* Koordinaten meist relativ zum Zentrum ('hot spot') angegeben
+* Filterregion muss nicht quadratisch oder zusammenhängend sein
 * Beispiele:
-    * Glättungsfilter
+    * Glättungsfilter (Tiefpassfilter)
+        * Abschwächung/ELimination der hochfrequenten Teile eines Bildes
+        * visueller Eindruck: Bild wird weicher
+        * Grauwertkanten werden verwischt
+        * Details und Rauschen eines Bildes werden abgeschwächt
+        * in homogenen Teilen eines Bildes (nicht hochfrequenten) haben Tiefpassfilter so gut wie keine Auswirkung
+            * Boxfilter
+            * Gaußfilter
+    * Differenzfilter
+        * gewichtete Differenz zwischen zentralem Pixel und umliegenden Werten
+        * Verstärkung lokaler Intensitätsspitzen
+        * negative Ergebnis-Werte sind möglich
+            * Laplacian of Gaussian (LoG) Filter (Mexican Hat Filter)
+    * Hochpassfilter
+        * Hervorhebung von hochfrequenten Teilen des Bildes
+        * der visuelle Bildeindruck wird härter
+        * feine Strukturen/ hochfrequente Anteile werden hervorgehoben
+        * Kanten werden verstärkt/ extrahiert
+        * homogene Bildbereiche werden gelöscht
+        * Bildrauschen wird verstärkt
+    * Kantenfilter/ Gradientenfilter
+        * Kanten entstehen durch lokale Änderungen von Intensität oder Farbe
+        * mathematisch gesehen ist eine Kante die erste Ableitung der Bildfunktion
+        * Übergänge zwischen hell und dunkel (Intensitätsunterschiede) werden vom menschen Sehsystem verstärkt
+        * Kantendetektion
+            * Prewitt-Operator (Gradientenfilter + Box-Glättung)
+            * Sobel-Operator (Gradientenfilter + Orthogonaler Gauß-Filter)
+            * Roberts-Operator (nicht sehr richtungsselektiv)
+
+<img title="Gradiationsfilter" src="https://github.com/s92854/FernerkundungS3/assets/134683810/fe0b3fd4-62ee-454d-b5d1-d28e0b6c38c0">
+
+**Prewitt-Operator**
+
+<img title="Prewitt-Operator" src="https://github.com/s92854/FernerkundungS3/assets/134683810/4c9751a7-339b-4ba4-8c94-750fc0afaed3">
+
+**Sobel-Operator**
+* wie Prewitt, nur mit Orthogonalem 1D-Gauß-Filter
+
+<img title="Sobel-Operator" src="https://github.com/s92854/FernerkundungS3/assets/134683810/79351ac6-e679-46c4-af2b-66316c704a2f">
+
+
+**Roberts-Operator**
+* nicht richtungsselektiv
+
+<img title="Roberts-Operator" src="https://github.com/s92854/FernerkundungS3/assets/134683810/2269b692-a19c-4bc2-a836-15253cd949f3">
+
 
 ##### Nicht lineare Filter
 
 ### Globale Operatoren
 * gesamtes Bild
 
-
-S. 66
