@@ -255,20 +255,86 @@ Ein Histogramm enthält nur Information über die Grauwertverteilung, nicht übe
 
 <img title="Prewitt-Operator" src="https://github.com/s92854/FernerkundungS3/assets/134683810/4c9751a7-339b-4ba4-8c94-750fc0afaed3">
 
+&nbsp;
+
 **Sobel-Operator**
 * wie Prewitt, nur mit Orthogonalem 1D-Gauß-Filter
 
 <img title="Sobel-Operator" src="https://github.com/s92854/FernerkundungS3/assets/134683810/79351ac6-e679-46c4-af2b-66316c704a2f">
 
+&nbsp;
 
 **Roberts-Operator**
 * nicht richtungsselektiv
 
 <img title="Roberts-Operator" src="https://github.com/s92854/FernerkundungS3/assets/134683810/2269b692-a19c-4bc2-a836-15253cd949f3">
 
+&nbsp;
+
+**Kantenschärfung mit der zweiten Ableitung der Bildfunktion**
+
+<img title="Kantenschärfung mittels 2. Ableitung" src="https://github.com/s92854/FernerkundungS3/assets/134683810/a79bad07-65de-497c-b874-1c2a268ae4a9">
+
 
 ##### Nicht lineare Filter
+* Rauschunterdrückung bei stochastischem Rauschen
+* wie lineare Filter über eine Umgebung R des Zielpixels mit einer nichtlinearen Funktion berechnet
+* z.B. Minimum & Maximum, Median
+
+**Minimum Operator**
+* geringster Grauwert wird ausgewählt und als Ergebniswert in Ausgabebild übertragen
+* zum Entfernen von hohen Ausreißern; vergrößert Pixel mit tiefen Grauwerten ohne ein unscharfes Bild zu erzeugen
+
+**Maximum Operator**
+* höchster Grauwert wird ausgewählt und als Ergebniswert in Ausgabebild übertragen
+* Entfernen von tiefen Ausreißern; vergrößert Pixel mit hohen Grauwerten
+
+**Median Operator**
+* vereint Vorteile von Min&Max
+* ersetzt jeden Pixel durch den Median seiner Umgebung
+    * Bilddurchlauf, detektion der Werte unter der Matrix
+    * Sortierung der Elemente (aufsteigend)
+    * Ergebniswert: Position in der Mitte
+
+<img title="Medianfilter" src="https://github.com/s92854/FernerkundungS3/assets/134683810/30f925ba-4c2c-4740-b70d-b4f18aab1f1a">
+
+<img title="Auswirkung eines 3x3 Medianfilter" src="https://github.com/s92854/FernerkundungS3/assets/134683810/d5d6c41d-b2e6-4e69-94c1-9b74c8beb3f8">
+
+##### Morphologische Operatoren
+* dient dem gezielten Beeinflussen der Bildstruktur, durch Schrumpfen und oder Wachsen
+
+<img title="Symbolisierung eines morphologischen Operators" src="https://github.com/s92854/FernerkundungS3/assets/134683810/d822bcba-121c-43e7-b147-504bd7be8d52">
+
+* durch Schrumpfen werden Randpixel entfernt und kleinere Strukturen verschwinden
+* durch Wachsen werden die übrig gebliebenen Strukturen wieder auf ihre richtige Größe gebracht
+
+***Nachbarschaft bei rechteckigen Bildern***
+<img title="Nachbarschaft rechteckiger Bilder" src="https://github.com/s92854/FernerkundungS3/assets/134683810/81a124d0-4f44-4c9c-9b63-8cc4dd37c977">
+
+**Strukturelement**
+* Grundelement der morphologischen Filterung
+* Menge von gesetzten Pixeln in einem Fenster beliebiger Form
+* z.B. Filtermatrix, Referenzpunkt
+* Opening
+    * Erosion gefolgt von Dilatation mit demselben Strukturbild; entfernt kleine Bildstrukturen
+* Closing
+    * Dilatation gefollgt von Erosion; füllt Löcher und Zwischenräume in Vordergrundstrukturen
+
+<img title="Opening" src="https://github.com/s92854/FernerkundungS3/assets/134683810/3721acba-85b4-49c1-a40d-803a5e118021">
+
+<img title="Closing" src="https://github.com/s92854/FernerkundungS3/assets/134683810/783d6466-f772-4939-8149-fe2701ffa0d3">
+
+&nbsp;
+
+* Grauwert-Dilatation<sup>????</sup>
+    * ersetzt Pixel durch Maximum der Summen aus dem Strukturelement H und der entsprechenden Bildregion I
+    * r = Radius des Strukturelements; je größer der Radius, desto verwaschener wirkt das Bild
+
+<img title="Grauwert-Dilatation" src="https://github.com/s92854/FernerkundungS3/assets/134683810/32f012bd-1de8-4aa5-807a-64014ab31f39">
+
+<img title="Grauwert-Dilatation" src="https://github.com/s92854/FernerkundungS3/assets/134683810/7e266620-3e35-467f-804b-a7a0a6500cfa">
+
 
 ### Globale Operatoren
-* gesamtes Bild
+* gesamtes Bild betreffend
 
