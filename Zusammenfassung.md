@@ -338,3 +338,47 @@ Ein Histogramm enthält nur Information über die Grauwertverteilung, nicht übe
 ### Globale Operatoren
 * gesamtes Bild betreffend
 
+## Kanalkombinationen
+### Spektrale Eigenschaften von Oberflächen?
+* durch spektrale Signatur charakterisiert: Reflexion ($\alpha$), Transmission ($\tau$), Absorption ($\rho$)
+* es gilt: $\rho + \alpha + \tau = 1$
+* für Strahlungsundurchlässige Körper gilt: $\rho + \alpha = 1$
+* spektrale Reflexionsmuster (reflectance patterns, signatures) ermöglichen zusammen mit räumlichen Kontext eine fernerkundliche Erkennung und Charakterisierung der Objekte
+* **Vegetation (photosynthetisch aktiv)**: starkeAbsorption im sichtbaren Bereich, starke Reflexion im NIR und MIR
+* **Böden**: Reflexionseigenschaften abhängig von der Beschaffenheit der obersten Bodenschicht; Reflexionsgrad steigt mit Zunehmen der Wellenlänge bis zum MIR, nimmt danach bis zum TIR wieder ab
+* **Wasser**: Reflexion nimmt mit steigender Wellenlänge ab (klares und tiefes Wasser: Reflexion nur im sichtbaren Bereich), mit zunehmender Trübung und abnehmender Tiefe steigt Reflexionsgrad bis in NIR an
+
+### Arithmetische Transformation multispektraler Kanäle
+Transformation umfasst einfache arithmetische Operationen mit denen aus multispektralen und/oder multitemporalen Datensätzen neue Informationsebenen erzeugt werden können (Addition, Subtraktion, Multiplikation, Ratiobildung) &rarr; besondere Eigenschaften, die für Analysen von Nutzen sind (z.B. Vegetationsindizies). Dient der Datenreduktion bzw. Betonung wichtiger Informationsgehalte.
+
+#### Ziele
+* Fabrverbesserung: Hervorhebung bestimmter Informationen
+* Datenfusion: Kombination verschiedener Bilder/Kanäle
+* Reduzierung der Dimensionen: Reduktion der Datenredundanz
+
+#### Ansätze
+* Arithmetische Operationen: Addition, Subtraktion, Multiplikation, Division
+* Index-Bildung: z.B. NDVI
+* Lineare Transformation mehrkanaliger Bilder: z.B. Hauptkomponententransformation
+
+#### Arithmetische Operationen
+* Innerhalb eines Kanals zur Veränderung der Intensitäten: Punktoperationen (Helligkeit, Kontrast)
+* Zwischen zwei Kanälen zur Extraktion von spezifischen Signaturunterschieden zwischen den zu interpretierenden Objekten, die auf der Grundlage von einzelnen Kanälen nicht erkennbar wären &rarr; neuer künstlicher Kanal mit **Indizies** zur Hervorhebung von bestimmten Merkmalen oder **Ratios** zur Behebnung der Beleuchtungsunterschiede; werden auf ko-registrierte Bilddaten des gleichen Gebietes angewendet
+
+##### Addition
+* mehrfache Aufnahmen einer bestimmten Region
+* dient der Rauschreduktion
+* $G(x,y) = F(x,y) + N(x,y)$
+> $G(x,y) -$ aufgenommener Bilddatensatz
+
+> $F(x,y) -$ tatsächliche Bildinhalte
+
+> $N(x,y) -$ zufallsverteilte Rauschkomponente
+
+##### Subtraktion
+* Differenzbildung zwischen zwei (meistens) bereits transformierten Kanälen
+* dient der Analyse von Veränderungen zwischen zwei Zeitpunkten
+* $Gdiff(x,y)=frac{255+G1(x,y)-G2(x,y)}{2}$
+
+##### Multiplikation
+S18
